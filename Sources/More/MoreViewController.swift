@@ -2,7 +2,7 @@
 //  MoreViewController.swift
 //  Pods
 //
-//  Created by YangBo on 2022/3/23.
+//  Created by o on 2022/3/23.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bgView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 290))
+        bgView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300))
 //        bgView.backgroundColor = UIColor.red
         view.addSubview(bgView)
         
@@ -36,6 +36,8 @@ class MoreViewController: UIViewController {
             currentNetworkLabel.text = "当前：测试环境"
         case 3:
             currentNetworkLabel.text = "当前：正式环境"
+        case 4:
+            currentNetworkLabel.text = "当前：测试环境2"
         default:
             currentNetworkLabel.text = "第一次启动：请选择默认环境"
             break
@@ -46,21 +48,28 @@ class MoreViewController: UIViewController {
         
         let color: String = "#7B94CD"
         let cutNetworkDeveloperButton = UIButton(type: .custom)
-        cutNetworkDeveloperButton.frame = CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 50)
+        cutNetworkDeveloperButton.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: 50)
         cutNetworkDeveloperButton.setTitle("开发环境", for: UIControl.State.normal)
         cutNetworkDeveloperButton.addTarget(self, action: #selector(developerButtonAction), for: UIControl.Event.touchUpInside)
         cutNetworkDeveloperButton.backgroundColor = color.hexColor
         bgView.addSubview(cutNetworkDeveloperButton)
 
         let cutNetworkTextButton = UIButton(type: .custom)
-        cutNetworkTextButton.frame = CGRect(x: 0, y: 120, width: self.view.frame.size.width, height: 50)
+        cutNetworkTextButton.frame = CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: 50)
         cutNetworkTextButton.setTitle("测试环境", for: UIControl.State.normal)
         cutNetworkTextButton.backgroundColor = color.hexColor
         cutNetworkTextButton.addTarget(self, action: #selector(cutNetworkTextButtonAction), for: UIControl.Event.touchUpInside)
         bgView.addSubview(cutNetworkTextButton)
         
+        let cutNetworkText2Button = UIButton(type: .custom)
+        cutNetworkText2Button.frame = CGRect(x: 0, y: 150, width: self.view.frame.size.width, height: 50)
+        cutNetworkText2Button.setTitle("测试环境2", for: UIControl.State.normal)
+        cutNetworkText2Button.backgroundColor = color.hexColor
+        cutNetworkText2Button.addTarget(self, action: #selector(cutNetworkText2ButtonAction), for: UIControl.Event.touchUpInside)
+        bgView.addSubview(cutNetworkText2Button)
+        
         let cutNetworkButton = UIButton(type: .custom)
-        cutNetworkButton.frame = CGRect(x: 0, y: 180, width: self.view.frame.size.width, height: 50)
+        cutNetworkButton.frame = CGRect(x: 0, y: 200, width: self.view.frame.size.width, height: 50)
         cutNetworkButton.setTitle("正式环境", for: UIControl.State.normal)
         cutNetworkButton.backgroundColor = color.hexColor
         cutNetworkButton.addTarget(self, action: #selector(cutNetworkButtonAction), for: UIControl.Event.touchUpInside)
@@ -68,7 +77,7 @@ class MoreViewController: UIViewController {
         
         if netType != 0 {
             let clearDataButton = UIButton(type: .custom)
-            clearDataButton.frame = CGRect(x: 0, y: 240, width: self.view.frame.size.width, height: 50)
+            clearDataButton.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 50)
             clearDataButton.setTitle("清除所有数据（相当于卸载重装）", for: UIControl.State.normal)
             clearDataButton.backgroundColor = color.hexColor
             clearDataButton.addTarget(self, action: #selector(clearDataButtonAction), for: UIControl.Event.touchUpInside)
@@ -88,6 +97,10 @@ class MoreViewController: UIViewController {
     
     @objc func cutNetworkTextButtonAction() {
         self.switchingNetwork(2)
+    }
+    
+    @objc func cutNetworkText2ButtonAction() {
+        self.switchingNetwork(4)
     }
     
     @objc func cutNetworkButtonAction() {
