@@ -34,7 +34,7 @@ public class WindowHelper: NSObject {
         if window.rootViewController == vc {
             return
         }
-        
+        window.addSubview(vc.view)
         window.rootViewController = vc
         window.delegate = self
         window.isHidden = false
@@ -67,6 +67,7 @@ public class WindowHelper: NSObject {
         if window.rootViewController == nil {
             return
         }
+        window.rootViewController?.view.removeFromSuperview()
         window.rootViewController = nil
         window.delegate = nil
         window.isHidden = true
