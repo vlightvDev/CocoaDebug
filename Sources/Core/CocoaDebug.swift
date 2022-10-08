@@ -52,6 +52,12 @@ import UIKit
         CocoaDebugSettings.shared.showBubbleAndWindow = true
     }
     
+    //MARK: - reduction Bubble
+    @objc public static func reductionBubble() {
+        CocoaDebugSettings.shared.reductionBubble = true
+    }
+    
+    
     //MARK: - 自定义的更多
     @objc public static func selectNetwork(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?,
                                            window: UIWindow!,
