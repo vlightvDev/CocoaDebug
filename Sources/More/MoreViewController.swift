@@ -113,8 +113,15 @@ class MoreViewController: UIViewController {
 
     func switchingNetwork(_ type: Int) {
         let appDomain = Bundle.main.bundleIdentifier
-        UserDefaults.standard.removePersistentDomain(forName: appDomain!)
-
+//        UserDefaults.standard.removePersistentDomain(forName: appDomain!)
+        let defs = UserDefaults.standard
+        let defaults = defs.dictionaryRepresentation()
+        for key in defaults.keys {
+            if !key.contains("_CocoaDebug") {
+                defs.removeObject(forKey: key)
+                defs.synchronize()
+            }
+        }
         if type == 0 {
 //            CustomHUD.show("清除数据...")
             let fileManager = FileManager.default
