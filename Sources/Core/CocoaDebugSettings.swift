@@ -102,6 +102,17 @@ import Foundation
             UserDefaults.standard.synchronize()
         }
     }
+    
+    @objc public var reductionBubble: Bool = false {
+        didSet {
+            if reductionBubble == true
+            {
+                CocoaDebugSettings.shared.bubbleFrameX = 1
+                CocoaDebugSettings.shared.bubbleFrameY = 200
+                WindowHelper.shared.vc.bubble.center = CGPoint(x: 1, y: 200)
+            }
+        }
+    }
     @objc public var showBubbleAndWindow: Bool = false {
         didSet {
             UserDefaults.standard.set(showBubbleAndWindow, forKey: "showBubbleAndWindow_CocoaDebug")
