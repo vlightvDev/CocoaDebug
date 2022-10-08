@@ -213,5 +213,9 @@ extension AppInfoViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
+        
+        if indexPath.section == 1 && indexPath.row == 5 {
+            CocoaDebug.reductionBubble()
+        }
     }
 }
