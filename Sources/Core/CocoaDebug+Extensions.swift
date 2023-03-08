@@ -154,20 +154,14 @@ extension Data {
         //1.pretty json
         if let str = self.dataToDictionary()?.dictionaryToString() {
             return str
-        } else {
-            //2.protobuf
-            //            if let message = try? GPBMessage.parse(from: self) {
-            //                if message.serializedSize() > 0 {
-            //                    return message.description
-            //                } else {
-            //                    //3.utf-8 string
-            //                    return String(data: self, encoding: .utf8)
-            //                }
-            //            } else {
-            //3.utf-8 string
-            return String(data: self, encoding: .utf8)
-            //            }
+        } else if let keyData = CocoaDebugSettings.shared.publicKeyData,
+                  let tempStr = String(data: self, encoding: .utf8),
+                  let data = Data(base64Encoded: tempStr),
+                  let result = MZRSA.decryptData(data, publicKeyData: keyData),
+                  let str = result.dataToDictionary()?.dictionaryToString() {
+            return str
         }
+        return String(data: self, encoding: .utf8)
     }
 }
 
@@ -192,6 +186,18 @@ extension String {
             return .clear
         }
         return UIColor(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
+    }
+    
+    func pemEncodedBase64String() -> String? {
+        let lines = self.components(separatedBy: "\n").filter { line in
+            return !line.hasPrefix("-----BEGIN") && !line.hasPrefix("-----END")
+        }
+        
+        guard lines.count != 0 else {
+            return nil
+        }
+        
+        return lines.joined(separator: "")
     }
 }
 

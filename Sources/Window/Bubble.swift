@@ -149,7 +149,7 @@ class Bubble: UIView {
     func updateOrientation(newSize: CGSize) {
         let oldSize = CGSize(width: newSize.height, height: newSize.width)
         let percent = center.y / oldSize.height * 100
-        let newOrigin = newSize.height * percent / 100
+        let newOrigin: CGFloat = 200
         let originX = frame.origin.x < newSize.height / 2 ? _width/8*4.25 : newSize.width - _width/8*4.25
         self.center = CGPoint(x: originX, y: newOrigin)
     }
