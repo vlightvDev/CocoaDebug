@@ -56,19 +56,7 @@ import UIKit
     @objc public static func reductionBubble() {
         CocoaDebugSettings.shared.reductionBubble = true
     }
-    
-    
-    //MARK: - 自定义的更多
-    @objc public static func selectNetwork(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?,
-                                           window: UIWindow!,
-                                           completionHandler: @escaping SelectFinishNetworkCallBack) {
-        MoreViewController.didFinishLaunching(launchOptions, window: window, completionHandler: completionHandler)
-    }
 
-    //MARK: - 自定义的更多
-    @objc public static func customMore() {
-        CocoaDebug.additionalViewController = MoreViewController.init()
-    }
 }
 
 
