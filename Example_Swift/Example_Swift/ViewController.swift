@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaDebug
 
 class ViewController: UIViewController {
 
@@ -82,6 +83,8 @@ class ViewController: UIViewController {
         }) { (request, error) in
             print(error?.localizedDescription)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(monitorShow(_:)), name: Notification.Name(CocoaDebug.monitorShowNotificationName), object: nil)
 
         //5.large response data
 //        HTTP.POST("http://api.ellabook.cn/rest/api/service", parameters: ["method": "ella.book.listAllPart"]) { response in
@@ -89,6 +92,11 @@ class ViewController: UIViewController {
 //        }
     }
 
+    @objc private func monitorShow(_ notification: Notification) {
+        if let info = notification.object {
+            
+        }
+    }
 
     func testRedirect() {
         RedirectRequester.getRedirectInfo(with: "http://apple.com") { result, response in

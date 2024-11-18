@@ -141,6 +141,11 @@ class AppInfoViewController: UITableViewController {
         CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
         self.showAlert()
     }
+    @IBAction func showMonitor(_ sender: UISwitch) {
+        let isOn = sender.isOn
+        let info = ["isShow":isOn]
+        NotificationCenter.default.post(name: Notification.Name(CocoaDebug.monitorShowNotificationName), object: info)
+    }
 }
 
 

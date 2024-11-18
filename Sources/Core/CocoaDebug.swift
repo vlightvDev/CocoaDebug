@@ -31,6 +31,8 @@ import UIKit
     @objc public static var mainColor: String = "#42d459"
     ///protobuf url and response class transfer map. Default value is `nil`.
     @objc public static var protobufTransferMap: [String: [String]]? = nil
+    ///性能监控展示开关通知
+    @objc public static let monitorShowNotificationName = "CocoaDebugMonitorShowNotificationName"
 
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
