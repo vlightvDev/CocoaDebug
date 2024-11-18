@@ -944,6 +944,7 @@
                         <outlet property="labelVersionNumber" destination="7Yi-0U-npR" id="cIg-RG-FLI"/>
                         <outlet property="labelserverURL" destination="buG-N4-VY9" id="W1a-e8-npR"/>
                         <outlet property="logSwitch" destination="Ssj-o9-QJs" id="BWf-MV-I6J"/>
+                        <outlet property="monitorSwitch" destination="aZz-74-VXt" id="MRv-em-8Bs"/>
                         <outlet property="naviItem" destination="nfh-qO-k6T" id="Hcv-Vg-JBZ"/>
                         <outlet property="networkSwitch" destination="rnB-9b-x8i" id="yFO-ad-hxg"/>
                         <outlet property="rnSwitch" destination="A7q-BC-KXI" id="CK3-u8-zrc"/>
