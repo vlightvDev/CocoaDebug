@@ -28,7 +28,8 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var rnSwitch: UISwitch!
     @IBOutlet weak var uiBlockingSwitch: UISwitch!
-    
+    @IBOutlet weak var monitorSwitch: UISwitch!
+
     var naviItemTitleLabel: UILabel?
     
     //MARK: - init
@@ -67,7 +68,8 @@ class AppInfoViewController: UITableViewController {
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         uiBlockingSwitch.isOn = CocoaDebugSettings.shared.enableUIBlockingMonitoring
-
+        monitorSwitch.isOn = CocoaDebugSettings.shared.enableUImonitorShow
+        
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
         rnSwitch.addTarget(self, action: #selector(rnSwitchChanged), for: UIControl.Event.valueChanged)
@@ -143,6 +145,7 @@ class AppInfoViewController: UITableViewController {
     }
     @IBAction func showMonitor(_ sender: UISwitch) {
         let isOn = sender.isOn
+        CocoaDebugSettings.shared.enableUImonitorShow = isOn
         let info = ["isShow":isOn]
         NotificationCenter.default.post(name: Notification.Name(CocoaDebug.monitorShowNotificationName), object: info)
     }

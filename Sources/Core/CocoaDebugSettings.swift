@@ -10,6 +10,9 @@ import Foundation
 
 @objc public class CocoaDebugSettings: NSObject {
     @objc public static let shared = CocoaDebugSettings()
+    
+    /// 性能监控开关状态
+    @objc public var enableUImonitorShow = false
 
     @objc public var slowAnimations: Bool = false {
         didSet {
